@@ -1,0 +1,126 @@
+Grade: 68.00/100.00
+
+4 Deduction(s):
+
+--------------
+#1: 8.00 points
+Failing test: test_mat_matrix_matrix_mult_small: 
+        We specify the point value for each test in the method comment string:
+        @points=8
+        
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg1.py", line 195, in test_mat_matrix_matrix_mult_small
+    self.assertEqual( Mat(M.tolist()) * Mat(N.tolist()),  xpct_Mat(M.dot(N).tolist()) )
+  File "/usr/lib/python3.6/unittest/case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "/usr/lib/python3.6/unittest/case.py", line 819, in _baseAssertEqual
+    if not first == second:
+  File "/home/tester/shared/grading/mat_sol.py", line 36, in equal
+    assert A.size == B.size
+AttributeError: 'NoneType' object has no attribute 'size'
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_mat_matrix_matrix_mult_small(self):
+         """
+         We specify the point value for each test in the method comment string:
+         @points=8
+         """
+         M = np.random.randint(10, 20, (30,20))
+         N = np.random.randint(10, 20, (20,40))
+         self.assertEqual( Mat(M.tolist()) * Mat(N.tolist()),  xpct_Mat(M.dot(N).tolist()) )
+--------------
+
+--------------
+#2: 8.00 points
+Failing test: test_mat_matrix_vector_mult: 
+        We specify the point value for each test in the method comment string:
+        @points=8
+        
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg1.py", line 184, in test_mat_matrix_vector_mult
+    self.assertTrue( self.equal(xpct_res,std_res) )
+  File "test_asg1.py", line 44, in equal
+    return M.size== N.size and M.store==N.store
+AttributeError: 'NoneType' object has no attribute 'size'
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_mat_matrix_vector_mult(self):
+         """
+         We specify the point value for each test in the method comment string:
+         @points=8
+         """
+         M = np.random.randint(10, 20, (30,20))
+         v = np.random.randint(10, 20, 20)
+ 
+         std_res = Mat(M.tolist()) * Vec(v.tolist())
+         xpct_res = xpct_Vec(M.dot(v).tolist())
+         self.assertTrue( self.equal(xpct_res,std_res) )
+--------------
+
+--------------
+#3: 8.00 points
+Failing test: test_mat_transpose: 
+        We specify the point value for each test in the method comment string:
+        @points=8
+        
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg1.py", line 157, in test_mat_transpose
+    self.assertEqual( Mat(M.tolist()).transpose(),  xpct_Mat(M.T.tolist()) )
+  File "/usr/lib/python3.6/unittest/case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "/usr/lib/python3.6/unittest/case.py", line 819, in _baseAssertEqual
+    if not first == second:
+  File "/home/tester/shared/grading/mat_sol.py", line 36, in equal
+    assert A.size == B.size
+AttributeError: 'NoneType' object has no attribute 'size'
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_mat_transpose(self):
+         """
+         We specify the point value for each test in the method comment string:
+         @points=8
+         """
+         M = np.random.randint(10, 20, (30,20))
+ 
+         self.assertEqual( Mat(M.tolist()).transpose(),  xpct_Mat(M.T.tolist()) )
+--------------
+
+--------------
+#4: 8.00 points
+Failing test: test_mat_vector_matrix_mult: 
+        We specify the point value for each test in the method comment string:
+        @points=8
+        
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg1.py", line 171, in test_mat_vector_matrix_mult
+    self.assertTrue( self.equal(std_res, xpct_res) )
+  File "test_asg1.py", line 44, in equal
+    return M.size== N.size and M.store==N.store
+AttributeError: 'NoneType' object has no attribute 'size'
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_mat_vector_matrix_mult(self):
+         """
+         We specify the point value for each test in the method comment string:
+         @points=8
+         """
+         M = np.random.randint(10, 20, (30,20))
+         u = np.random.randint(10, 20, 30)
+         std_res = Vec(u.tolist()) * Mat(M.tolist())
+         xpct_res = xpct_Vec(u.dot(M).tolist())
+ 
+         self.assertTrue( self.equal(std_res, xpct_res) )
+--------------
+

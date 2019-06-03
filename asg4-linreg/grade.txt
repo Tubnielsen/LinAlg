@@ -1,0 +1,121 @@
+Grade: 60.00/100.00
+
+4 Deduction(s):
+
+--------------
+#1: 10.00 points
+Failing test: test_exponential_model: 
+        We specify the point value for each test in the method comment string:
+        @points=10
+        
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg4.py", line 66, in test_exponential_model
+    self.assertTrue(np.allclose( exponential_model(self.x,self.y), dm561.exponential_model(self.x,self.y) ) )
+  File "students/tobia17-repo/asg4-linreg/asg4.py", line 113, in exponential_model
+    raise NotImplementedError("exponential_model ncomplete")
+NotImplementedError: exponential_model ncomplete
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_exponential_model(self):
+         """
+         We specify the point value for each test in the method comment string:
+         @points=10
+         """
+         self.assertTrue(np.allclose( exponential_model(self.x,self.y), dm561.exponential_model(self.x,self.y) ) )
+--------------
+
+--------------
+#2: 10.00 points
+Failing test: test_logarithmic_model: 
+        We specify the point value for each test in the method comment string:
+        @points=10
+        
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg4.py", line 84, in test_logarithmic_model
+    self.assertTrue(np.allclose( logarithmic_model(self.x,self.y), dm561.logarithmic_model(self.x,self.y) ) )
+  File "students/tobia17-repo/asg4-linreg/asg4.py", line 159, in logarithmic_model
+    raise NotImplementedError("logarithmic_model incomplete")
+NotImplementedError: logarithmic_model incomplete
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_logarithmic_model(self):
+         """
+         We specify the point value for each test in the method comment string:
+         @points=10
+         """
+         self.assertTrue(np.allclose( logarithmic_model(self.x,self.y), dm561.logarithmic_model(self.x,self.y) ) )
+--------------
+
+--------------
+#3: 10.00 points
+Failing test: test_power_model: 
+        We specify the point value for each test in the method comment string:
+        @points=10
+        
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg4.py", line 75, in test_power_model
+    self.assertTrue(np.allclose( power_model(self.x,self.y), dm561.power_model(self.x,self.y) ) )
+  File "students/tobia17-repo/asg4-linreg/asg4.py", line 136, in power_model
+    raise NotImplementedError("power_model incomplete")
+NotImplementedError: power_model incomplete
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_power_model(self):
+         """
+         We specify the point value for each test in the method comment string:
+         @points=10
+         """
+         self.assertTrue(np.allclose( power_model(self.x,self.y), dm561.power_model(self.x,self.y) ) )
+--------------
+
+--------------
+#4: 10.00 points
+Failing test: test_training_error: 
+        We specify the point value for each test in the method comment string:
+        @points=10
+        
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg4.py", line 97, in test_training_error
+    errs.append(training_error(f,self.x,self.y))
+  File "students/tobia17-repo/asg4-linreg/asg4.py", line 184, in training_error
+    raise NotImplementedError("training_error incomplete")
+NotImplementedError: training_error incomplete
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_training_error(self):
+         """
+         We specify the point value for each test in the method comment string:
+         @points=10
+         """
+         errs = []
+         a,b = linear_model(self.x,self.y)
+         f=lambda xx: a*xx + b
+         errs.append(training_error(f,self.x,self.y))
+ 
+         a,b = exponential_model(self.x,self.y)
+         f = lambda xx: a*np.exp(b*xx)
+         errs.append(training_error(f,self.x,self.y))
+ 
+         a,b = power_model(self.x,self.y)
+         f = lambda xx: a*(xx**b)
+         errs.append(training_error(f,self.x,self.y))
+ 
+         a,b = logarithmic_model(self.x,self.y)
+         f = lambda xx: a+b*np.log(xx)
+         errs.append(training_error(f,self.x,self.y))
+ 
+         self.assertTrue(np.allclose( errs, [5.973961356228736, 0.8727449317143492, 7.9556607875909435, 11.3350059692616] ) )
+--------------
+

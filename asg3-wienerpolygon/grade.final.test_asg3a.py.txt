@@ -1,0 +1,188 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Grade: 60.00/92.00
+
+6 Deduction(s):
+
+- --------------
+#1: 5.00 points
+Failing test: test_initPointsException:  @points=5 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg3a.py", line 53, in test_initPointsException
+    self.assertRaises(ValueError, initPoints, 2)
+AssertionError: ValueError not raised by initPoints
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_initPointsException(self):
+         """ @points=5 """
+         self.assertRaises(ValueError, initPoints, 2)
+- --------------
+
+- --------------
+#2: 5.00 points
+Failing test: test_updatePointsException:  @points=5 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg3a.py", line 178, in test_updatePointsException
+    self.assertRaises(ValueError, updatePoints, M, x, y)
+AssertionError: ValueError not raised by updatePoints
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_updatePointsException(self):
+         """ @points=5 """
+         (x,y)=(np.array([ 0.09335276, -0.39213569,  0.45454744,  0.47834171, -0.63410622]),np.array([-0.25395211,  0.1276667 ,  0.00838746, -0.21242824, -0.46967381]))
+         M = self.sol_matrixM(len(x))
+         self.assertRaises(ValueError, updatePoints, M, x, y)
+- --------------
+
+- --------------
+#3: 1.00 points
+Failing test: test_convEllipse:  @points=1 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/numpy-1.15.4-py3.6-linux-x86_64.egg/numpy/core/fromnumeric.py", line 51, in _wrapfunc
+    return getattr(obj, method)(*args, **kwds)
+AttributeError: 'NoneType' object has no attribute 'round'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg3a.py", line 114, in test_convEllipse
+    result = np.around(convEllipse(x,y),3).tolist()
+  File "/usr/local/lib/python3.6/dist-packages/numpy-1.15.4-py3.6-linux-x86_64.egg/numpy/core/fromnumeric.py", line 2800, in around
+    return _wrapfunc(a, 'round', decimals=decimals, out=out)
+  File "/usr/local/lib/python3.6/dist-packages/numpy-1.15.4-py3.6-linux-x86_64.egg/numpy/core/fromnumeric.py", line 61, in _wrapfunc
+    return _wrapit(obj, method, *args, **kwds)
+  File "/usr/local/lib/python3.6/dist-packages/numpy-1.15.4-py3.6-linux-x86_64.egg/numpy/core/fromnumeric.py", line 41, in _wrapit
+    result = getattr(asarray(obj), method)(*args, **kwds)
+TypeError: unsupported operand type(s) for *: 'NoneType' and 'float'
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_convEllipse(self):
+         """ @points=1 """
+         (x,y)=(np.array([ 0.09335276, -0.39213569,  0.45454744,  0.47834171, -0.63410622]),np.array([-0.25395211,  0.1276667 ,  0.80838746, -0.21242824, -0.46967381]))
+         result = np.around(convEllipse(x,y),3).tolist()
+         expected = np.around(self.sol_convEllipse(x,y),3).tolist()
+         self.assertListEqual( result[0], expected[0] )
+         self.assertListEqual( result[1], expected[1] )
+- --------------
+
+- --------------
+#4: 15.00 points
+Failing test: test_initPoints:  @points=15 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg3a.py", line 58, in test_initPoints
+    result = round(norm(initPoints(5)[0]),2)
+TypeError: 'NoneType' object is not subscriptable
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_initPoints(self):
+         """ @points=15 """
+         result = round(norm(initPoints(5)[0]),2)
+         expected = round(norm(self.sol_initPoints(5)[0]),2)
+         self.assertAlmostEqual( result, expected )
+ 
+         result = round(mean(initPoints(5)[0]),2)
+         expected = round(mean(self.sol_initPoints(5)[0]),2)
+         self.assertAlmostEqual( result, expected )
+ 
+         result = len(initPoints(5)[0])
+         expected = 5
+         self.assertEqual( result, expected )
+- --------------
+
+- --------------
+#5: 1.00 points
+Failing test: test_pairCS:  @points=1 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/numpy-1.15.4-py3.6-linux-x86_64.egg/numpy/core/fromnumeric.py", line 51, in _wrapfunc
+    return getattr(obj, method)(*args, **kwds)
+AttributeError: 'NoneType' object has no attribute 'round'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg3a.py", line 79, in test_pairCS
+    result = np.around(pairCS(7),3).tolist()
+  File "/usr/local/lib/python3.6/dist-packages/numpy-1.15.4-py3.6-linux-x86_64.egg/numpy/core/fromnumeric.py", line 2800, in around
+    return _wrapfunc(a, 'round', decimals=decimals, out=out)
+  File "/usr/local/lib/python3.6/dist-packages/numpy-1.15.4-py3.6-linux-x86_64.egg/numpy/core/fromnumeric.py", line 61, in _wrapfunc
+    return _wrapit(obj, method, *args, **kwds)
+  File "/usr/local/lib/python3.6/dist-packages/numpy-1.15.4-py3.6-linux-x86_64.egg/numpy/core/fromnumeric.py", line 41, in _wrapit
+    result = getattr(asarray(obj), method)(*args, **kwds)
+TypeError: unsupported operand type(s) for *: 'NoneType' and 'float'
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_pairCS(self):
+         """ @points=1 """
+         result = np.around(pairCS(7),3).tolist()
+         expected = np.around(self.sol_pairCS(7),3).tolist()
+         self.assertListEqual( result[0], expected[0] )
+         self.assertListEqual( result[1], expected[1] )
+- --------------
+
+- --------------
+#6: 5.00 points
+Failing test: test_updatePoints:  @points=5 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/numpy-1.15.4-py3.6-linux-x86_64.egg/numpy/core/fromnumeric.py", line 51, in _wrapfunc
+    return getattr(obj, method)(*args, **kwds)
+AttributeError: 'NoneType' object has no attribute 'round'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg3a.py", line 169, in test_updatePoints
+    result =  np.around(updatePoints(M@M,x,y),3).tolist()
+  File "/usr/local/lib/python3.6/dist-packages/numpy-1.15.4-py3.6-linux-x86_64.egg/numpy/core/fromnumeric.py", line 2800, in around
+    return _wrapfunc(a, 'round', decimals=decimals, out=out)
+  File "/usr/local/lib/python3.6/dist-packages/numpy-1.15.4-py3.6-linux-x86_64.egg/numpy/core/fromnumeric.py", line 61, in _wrapfunc
+    return _wrapit(obj, method, *args, **kwds)
+  File "/usr/local/lib/python3.6/dist-packages/numpy-1.15.4-py3.6-linux-x86_64.egg/numpy/core/fromnumeric.py", line 41, in _wrapit
+    result = getattr(asarray(obj), method)(*args, **kwds)
+TypeError: unsupported operand type(s) for *: 'NoneType' and 'float'
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_updatePoints(self):
+         """ @points=5 """
+         (x,y)=(np.array([ 0.09335276, -0.39213569,  0.45454744,  0.47834171, -0.63410622]),np.array([-0.25395211,  0.1276667 ,  0.80838746, -0.21242824, -0.46967381]))
+         M=matrixM(len(x))
+         result =  np.around(updatePoints(M@M,x,y),3).tolist()
+         expected =  np.around(self.sol_updatePoints(M@M,x,y),3).tolist()
+         self.assertListEqual( result, expected )
+- --------------
+
+
+Metadata
+===================
+Assignment: asg3-wienerpolygon
+Repo: ssh://git@git.imada.sdu.dk/DM561-DM562-2018/tobia17-repo
+Timestamp: 1544189409.1334293
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQEcBAEBAgAGBQJcCnXhAAoJEKiHxn3oWX95BwAIAJwfPapo9nO1/AXrL5WYgPwQ
+WFI/aPbV5rg33OAzzZBY9RlRqc6NdGX05XXUuFDzCYhN+YDyjdlh0Gb7rIFPDCEq
+qUODSLRv3lOQQoJ8tuGhwyFN+0E40V3aOBT/lfBVZkCw9V91borFxiW0sFuDucdE
+SxQf+AVmcwWGb5qkYRbdn2h2fE1lMbPQRQDh/CY7pr9w1gIOHvPGh7uRaV3Eb0FU
+ANqKBx67hg386IlU7jW6AAzo+RLrki/ReX6CuBUZNpuGRPhK47xCDf9ND5k6qnsR
+FggTrEbw4HgJSQIMaL0w4+FCkaU/tEMURg+6GKJmQ5AEahtNejRoZnieTuprcgI=
+=fMqW
+-----END PGP SIGNATURE-----

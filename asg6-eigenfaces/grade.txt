@@ -1,0 +1,102 @@
+Grade: 0.00/100.00
+
+4 Deduction(s):
+
+--------------
+#1: 20.00 points
+Failing test: test_distanceException:  @points=20 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg6.py", line 59, in test_distanceException
+    self.assertRaises(TypeError, distanceImages, data[1,:], data[1:10][1:10])
+AssertionError: TypeError not raised by distanceImages
+
+source:
+    @timeout_decorator.timeout(2)
+     def test_distanceException(self):
+         """ @points=20 """
+         self.assertRaises(TypeError, distanceImages, data[1,:], data[1:10][1:10])
+--------------
+
+--------------
+#2: 30.00 points
+Failing test: test_distanceImages:  @points=30 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg6.py", line 47, in test_distanceImages
+    self.assertAlmostEqual( result, expected, places=2)
+  File "/usr/lib/python3.6/unittest/case.py", line 871, in assertAlmostEqual
+    if round(abs(second-first), places) == 0:
+TypeError: unsupported operand type(s) for -: 'float' and 'NoneType'
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_distanceImages(self):
+         """ @points=30 """
+         dataImg1=np.array([ 0.18039216,  0.18039216,  0.18039216,  0.20392157,  0.20392157])
+         dataImg2=np.array([ 0.49411765,  0.49411765,  0.49411765,  0.49411765,  0.49411765])
+         expected = sol.distanceImages(dataImg1, dataImg2)
+         result = distanceImages(dataImg1, dataImg2)
+         self.assertAlmostEqual( result, expected, places=2)
+ 
+ 
+         dataImg1=data[1,:]
+         dataImg2=data[2,:]
+         expected = sol.distanceImages(dataImg1, dataImg2)
+         result = distanceImages(dataImg1, dataImg2)
+         self.assertAlmostEqual( result, expected, places=2 )
+--------------
+
+--------------
+#3: 25.00 points
+Failing test: test_indexDistancePairsSortedByDistance:  @points=25 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg6.py", line 73, in test_indexDistancePairsSortedByDistance
+    result = indexDistancePairsSortedByDistance(data, range(10,15), mean, eigenVectors)[-1][0]
+TypeError: 'NoneType' object is not subscriptable
+
+source:
+    @timeout_decorator.timeout(30)
+     def test_indexDistancePairsSortedByDistance(self):
+         """ @points=25 """
+         result = indexDistancePairsSortedByDistance(data, range(10,15), mean, eigenVectors)[-1][0]
+         expected = sol.indexDistancePairsSortedByDistance(data, range(10,15), mean, eigenVectors)[-1][0]
+         self.assertEqual( result, expected )
+--------------
+
+--------------
+#4: 25.00 points
+Failing test: test_projectAndBackProject:  @points=25 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/numpy/core/fromnumeric.py", line 51, in _wrapfunc
+    return getattr(obj, method)(*args, **kwds)
+AttributeError: 'NoneType' object has no attribute 'round'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg6.py", line 64, in test_projectAndBackProject
+    result = np.around(projectAndBackProject(data[0,:], mean, eigenVectors)).tolist()
+  File "/usr/local/lib/python3.6/dist-packages/numpy/core/fromnumeric.py", line 2800, in around
+    return _wrapfunc(a, 'round', decimals=decimals, out=out)
+  File "/usr/local/lib/python3.6/dist-packages/numpy/core/fromnumeric.py", line 61, in _wrapfunc
+    return _wrapit(obj, method, *args, **kwds)
+  File "/usr/local/lib/python3.6/dist-packages/numpy/core/fromnumeric.py", line 41, in _wrapit
+    result = getattr(asarray(obj), method)(*args, **kwds)
+AttributeError: 'NoneType' object has no attribute 'rint'
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_projectAndBackProject(self):
+         """ @points=25 """
+         result = np.around(projectAndBackProject(data[0,:], mean, eigenVectors)).tolist()
+         expected = np.around(sol.projectAndBackProject(data[0,:], mean, eigenVectors)).tolist()
+         self.assertListEqual( result, expected )
+--------------
+

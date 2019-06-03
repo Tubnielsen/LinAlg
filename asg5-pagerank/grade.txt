@@ -1,0 +1,121 @@
+Grade: 64.00/100.00
+
+4 Deduction(s):
+
+--------------
+#1: 4.00 points
+Failing test: test_get_ranks: 
+        We specify the point value for each test in the method comment string:
+        @points=4
+        
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg5.py", line 109, in test_get_ranks
+    rank = get_ranks(steady_state)
+  File "students/tobia17-repo/asg5-pagerank/asg5.py", line 134, in get_ranks
+    raise NotImplementedError("Problem 3 Incomplete")
+NotImplementedError: Problem 3 Incomplete
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_get_ranks(self):
+         """
+         We specify the point value for each test in the method comment string:
+         @points=4
+         """
+         G = DiGraph(self.A, labels=list('abcdefghil'))
+         steady_state = G.linsolve(epsilon=0.8)
+         rank = get_ranks(steady_state)
+ 
+         G_dm561 = dm561.DiGraph(self.A, labels=list('abcdefghil'))
+         dm561_steady_state = G_dm561.linsolve(epsilon=0.8)
+         dm561_rank = get_ranks(dm561_steady_state)
+         self.assertEqual(rank,dm561_rank)
+--------------
+
+--------------
+#2: 12.00 points
+Failing test: test_itersolve: 
+        We specify the point value for each test in the method comment string:
+        @points=12
+        
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg5.py", line 93, in test_itersolve
+    steady_state = G.itersolve(epsilon=0.7)
+  File "students/tobia17-repo/asg5-pagerank/asg5.py", line 123, in itersolve
+    raise NotImplementedError("Problem 2 Incomplete")
+NotImplementedError: Problem 2 Incomplete
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_itersolve(self):
+         """
+         We specify the point value for each test in the method comment string:
+         @points=12
+         """
+         G = DiGraph(self.A, labels=list('abcdefghil'))
+         steady_state = G.itersolve(epsilon=0.7)
+ 
+         G_dm561 = dm561.DiGraph(self.A, labels=list('abcdefghil'))
+         dm561_steady_state = G_dm561.itersolve(epsilon=0.7)
+ 
+         self.assertTrue(self.AlmostEqualDict(steady_state, dm561_steady_state))
+--------------
+
+--------------
+#3: 10.00 points
+Failing test: test_rank_uefa_teams: 
+        We specify the point value for each test in the method comment string:
+        @points=10
+        
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg5.py", line 136, in test_rank_uefa_teams
+    res = rank_uefa_teams("psh-uefa-2017-2018.csv",0.9)[0:10]
+  File "students/tobia17-repo/asg5-pagerank/asg5.py", line 187, in rank_uefa_teams
+    raise NotImplementedError("Task 3 Incomplete")
+NotImplementedError: Task 3 Incomplete
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_rank_uefa_teams(self):
+         """
+         We specify the point value for each test in the method comment string:
+         @points=10
+         """
+         res = rank_uefa_teams("psh-uefa-2017-2018.csv",0.9)[0:10]
+ 
+         self.assertEqual(res, dm561.rank_uefa_teams("psh-uefa-2017-2018.csv",0.9)[0:10] )
+--------------
+
+--------------
+#4: 10.00 points
+Failing test: test_rank_websites: 
+        We specify the point value for each test in the method comment string:
+        @points=10
+        
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg5.py", line 124, in test_rank_websites
+    res = rank_websites(epsilon=0.8)[0:10]
+  File "students/tobia17-repo/asg5-pagerank/asg5.py", line 161, in rank_websites
+    raise NotImplementedError("Task 2 Incomplete")
+NotImplementedError: Task 2 Incomplete
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_rank_websites(self):
+         """
+         We specify the point value for each test in the method comment string:
+         @points=10
+         """
+         res = rank_websites(epsilon=0.8)[0:10]
+ 
+         self.assertEqual(res, dm561.rank_websites(epsilon=0.8)[0:10] )
+--------------
+

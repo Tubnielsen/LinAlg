@@ -1,0 +1,115 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Grade: 76.00/100.00
+
+3 Deduction(s):
+
+- --------------
+#1: 8.00 points
+Failing test: test_mat_matrix_matrix_mult_small: 
+        We specify the point value for each test in the method comment string:
+        @points=8
+        
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg1.py", line 195, in test_mat_matrix_matrix_mult_small
+    self.assertEqual( Mat(M.tolist()) * Mat(N.tolist()),  xpct_Mat(M.dot(N).tolist()) )
+  File "/usr/lib/python3.6/unittest/case.py", line 829, in assertEqual
+    assertion_func(first, second, msg=msg)
+  File "/usr/lib/python3.6/unittest/case.py", line 819, in _baseAssertEqual
+    if not first == second:
+  File "/home/tester/shared/grading/mat_sol.py", line 36, in equal
+    assert A.size == B.size
+AttributeError: 'NoneType' object has no attribute 'size'
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_mat_matrix_matrix_mult_small(self):
+         """
+         We specify the point value for each test in the method comment string:
+         @points=8
+         """
+         M = np.random.randint(10, 20, (30,20))
+         N = np.random.randint(10, 20, (20,40))
+         self.assertEqual( Mat(M.tolist()) * Mat(N.tolist()),  xpct_Mat(M.dot(N).tolist()) )
+- --------------
+
+- --------------
+#2: 8.00 points
+Failing test: test_mat_matrix_vector_mult: 
+        We specify the point value for each test in the method comment string:
+        @points=8
+        
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg1.py", line 184, in test_mat_matrix_vector_mult
+    self.assertTrue( self.equal(xpct_res,std_res) )
+  File "test_asg1.py", line 44, in equal
+    return M.size== N.size and M.store==N.store
+AttributeError: 'NoneType' object has no attribute 'size'
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_mat_matrix_vector_mult(self):
+         """
+         We specify the point value for each test in the method comment string:
+         @points=8
+         """
+         M = np.random.randint(10, 20, (30,20))
+         v = np.random.randint(10, 20, 20)
+ 
+         std_res = Mat(M.tolist()) * Vec(v.tolist())
+         xpct_res = xpct_Vec(M.dot(v).tolist())
+         self.assertTrue( self.equal(xpct_res,std_res) )
+- --------------
+
+- --------------
+#3: 8.00 points
+Failing test: test_mat_vector_matrix_mult: 
+        We specify the point value for each test in the method comment string:
+        @points=8
+        
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg1.py", line 171, in test_mat_vector_matrix_mult
+    self.assertTrue( self.equal(std_res, xpct_res) )
+  File "test_asg1.py", line 44, in equal
+    return M.size== N.size and M.store==N.store
+AttributeError: 'NoneType' object has no attribute 'size'
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_mat_vector_matrix_mult(self):
+         """
+         We specify the point value for each test in the method comment string:
+         @points=8
+         """
+         M = np.random.randint(10, 20, (30,20))
+         u = np.random.randint(10, 20, 30)
+         std_res = Vec(u.tolist()) * Mat(M.tolist())
+         xpct_res = xpct_Vec(u.dot(M).tolist())
+ 
+         self.assertTrue( self.equal(std_res, xpct_res) )
+- --------------
+
+
+Metadata
+===================
+Assignment: asg1-vecmat
+Repo: ssh://git@git.imada.sdu.dk/DM561-DM562-2018/tobia17-repo
+Timestamp: 1542978851.2189593
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQEcBAEBAgAGBQJb9/0jAAoJEKiHxn3oWX95TCEH/2fj6+ISS4dsMixE9kz9e8tq
+k1jfUNZ2+mnVwrUK2bO9mM2DqLXxYsjhe8935gfEmeAI4/tTpo7Evyuiv4UqNNwM
+bV+eaIqCA0HzefmtwfiAqDl5vAwHnmgKDMC91ugXWx4fAyhBO6HAE1ThTyiTx+pR
+TdM9l69BmdT/fBc/0Mz9qgW5GCqB1GlPGHZWLbQcxCJKHakWEFYteRWm2iuC7P9X
+Gdj9ieISB6PBR6kN41CVzkGHFzePPwlqO3FY1TqpyuZ+bnDwOp9wVQyez6PV/ab0
+yXNEWC99dxShcD2YnViuHJmZzVKq/EC9poMTN3rRExlCS3vRFzZ104JjZfhq+LY=
+=8ttl
+-----END PGP SIGNATURE-----

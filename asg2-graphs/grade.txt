@@ -1,0 +1,295 @@
+Grade: 40.00/100.00
+
+6 Deduction(s):
+
+--------------
+#1: 5.00 points
+Failing test: test_isPermutationMatrixException2:  @points=5 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg2.py", line 76, in test_isPermutationMatrixException2
+    self.assertRaises(ValueError, isPermutationMatrix, arg)
+AssertionError: ValueError not raised by isPermutationMatrix
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_isPermutationMatrixException2(self):
+         """ @points=5 """
+         arg=np.array([[2,0,1],[0,0,1],[0,0,1]])
+         self.assertRaises(ValueError, isPermutationMatrix, arg)
+--------------
+
+--------------
+#2: 1.00 points
+Failing test: test_moreThanOneSubgraphTest1:  
+        This is the test for instances where a brute force
+        approach should work fine.
+        @points=1 
+        
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg2.py", line 155, in test_moreThanOneSubgraphTest1
+    self.assertEqual( result, expected )
+AssertionError: None != True
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_moreThanOneSubgraphTest1(self):
+         """ 
+         This is the test for instances where a brute force
+         approach should work fine.
+         @points=1 
+         """
+         A = np.array([[0, 1, 0, 0], [1, 0, 1, 0], [0, 1, 0, 1], [0, 0, 1, 0]])  
+         B = np.array([[0, 1], [1, 0]])
+         result = moreThanOneSubgraph(A, B)
+         expected = self.sol_moreThanOneSubgraph(A, B)
+         self.assertEqual( result, expected )
+ 
+         # Naaaah ... While "return True" is indeed a good guess for an automated
+         # testing environment, it is a bit like Randall's solution in 
+         # xkcd 1266 .... https://xkcd.com/1266/ :) ...
+         # see also https://www.explainxkcd.com/wiki/index.php/1266:_Halting_Problem
+         #
+         A = np.array([[0, 1, 0, 0], [1, 0, 1, 0], [0, 1, 0, 1], [0, 0, 1, 0]])
+         B = np.array([[0, 1, 1], [1, 0, 1], [0, 1, 1]])
+         result = moreThanOneSubgraph(A, B)
+         expected = self.sol_moreThanOneSubgraph(A, B)
+         self.assertEqual( result, expected )
+ 
+         A = np.array([[0, 1, 1], [1, 0, 1], [1, 1, 0]])	
+         B = np.array([[0, 1], [1, 0]])
+         result = moreThanOneSubgraph(A, B)
+         expected = self.sol_moreThanOneSubgraph(A, B)
+         self.assertEqual( result, expected )
+--------------
+
+--------------
+#3: 1.00 points
+Failing test: test_moreThanOneSubgraphTest2:  @points=1 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg2.py", line 200, in test_moreThanOneSubgraphTest2
+    self.assertEqual( result, expected )
+AssertionError: None != False
+
+source:
+    @timeout_decorator.timeout(30)
+     def test_moreThanOneSubgraphTest2(self):
+         """ @points=1 """
+         A = np.array([[0,0,0,0,1,0,0,0,0,0],
+                       [0,0,0,0,0,1,0,0,0,1],
+                       [0,0,0,0,0,0,0,1,0,0],
+                       [0,0,0,0,1,0,0,0,0,1],
+                       [1,0,0,1,0,0,1,1,0,0],
+                       [0,1,0,0,0,0,1,0,0,0],
+                       [0,0,0,0,1,1,0,0,1,0],
+                       [0,0,1,0,1,0,0,0,1,0],
+                       [0,0,0,0,0,0,1,1,0,0],
+                       [0,1,0,1,0,0,0,0,0,0]])
+         
+         B = np.array([[0,0,1,0,0,0,0,0,0],
+                       [0,0,1,0,0,1,0,0,0],
+                       [1,1,0,0,0,0,0,1,1],
+                       [0,0,0,0,1,0,0,0,1],
+                       [0,0,0,1,0,1,0,0,0],
+                       [0,1,0,0,1,0,0,0,0],
+                       [0,0,0,0,0,0,0,1,1],
+                       [0,0,1,0,0,0,1,0,0],
+                       [0,0,1,1,0,0,1,0,0]])
+         
+         result = moreThanOneSubgraph(A, B)
+         expected = self.sol_moreThanOneSubgraph(A, B)
+         self.assertEqual( result, expected )
+         
+         A = np.array([[0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1],
+              [0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0],
+              [1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1],
+              [1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 0],
+              [0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 0],
+              [1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0],
+              [1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1],
+              [1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1],
+              [1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1],
+              [1, 1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0],
+              [1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0],
+              [1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1],
+              [1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0],
+              [1, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1],
+              [0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0],
+              [0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+              [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0],
+              [0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1],
+              [0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+              [1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0]])
+         
+         B = np.array([[0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1],
+              [0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 1],
+              [0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0],
+              [1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 0],
+              [0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 1],
+              [0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1],
+              [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0],
+              [0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0, 1, 0],
+              [1, 1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1],
+              [0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1],
+              [1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1],
+              [1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0],
+              [1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1],
+              [0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1],
+              [1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0]])
+         
+         result = moreThanOneSubgraph(A, B)
+         expected = self.sol_moreThanOneSubgraph(A, B)
+         self.assertEqual( result, expected )
+ 
+         A = np.array([[0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+              [0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+              [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0],
+              [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+              [0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+              [0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+              [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+              [0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+              [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+              [1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0],
+              [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+              [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
+              [0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+              [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0],
+              [0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0],
+              [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+              [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+              [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+              [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+              [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]])
+         
+         B = np.array([[0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+              [0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0],
+              [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+              [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0],
+              [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+              [1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0],
+              [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+              [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1],
+              [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+              [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+              [0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0],
+              [0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+              [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]])
+ 
+         
+         result = moreThanOneSubgraph(A, B)
+         expected = self.sol_moreThanOneSubgraph(A, B)
+         self.assertEqual( result, expected )
+         
+ 
+         A = [[0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0],
+              [0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0],
+              [1, 1, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0],
+              [0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0],
+              [0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1],
+              [1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0],
+              [1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1],
+              [1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+              [0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0],
+              [0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+              [0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1],
+              [1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1],
+              [1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+              [1, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
+              [0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 1],
+              [0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0],
+              [0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0],
+              [1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1],
+              [1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1],
+              [0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 0]]
+ 
+         B = [[0, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1],
+              [1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0, 1],
+              [1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0],
+              [0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0],
+              [1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1],
+              [0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0],
+              [0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1],
+              [0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0],
+              [0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0],
+              [1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1],
+              [1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0],
+              [1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1],
+              [1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0]]
+ 
+         result = moreThanOneSubgraph(A, B)
+         expected = self.sol_moreThanOneSubgraph(A, B)
+         self.assertEqual( result, expected )
+--------------
+
+--------------
+#4: 14.00 points
+Failing test: test_numIsomorphismsTest1:  @points=14 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg2.py", line 126, in test_numIsomorphismsTest1
+    self.assertEqual( result, expected )
+AssertionError: None != 6
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_numIsomorphismsTest1(self):
+         """ @points=14 """
+         A = np.array([[0, 1, 1], [1, 0, 1], [1, 1, 0]])
+         B = np.array([[0, 1, 1], [1, 0, 1], [1, 1, 0]])
+         result = numIsomorphisms(A, B)
+         expected = self.sol_numIsomorphisms(A, B)
+         self.assertEqual( result, expected )
+--------------
+
+--------------
+#5: 14.00 points
+Failing test: test_numIsomorphismsTest2:  @points=14 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg2.py", line 136, in test_numIsomorphismsTest2
+    self.assertEqual( result, expected )
+AssertionError: None != 0
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_numIsomorphismsTest2(self):
+         """ @points=14 """
+         A = np.array([[0, 1, 1], [1, 0, 0], [1, 1, 0]])
+         B = np.array([[0, 1, 1], [1, 0, 1], [1, 1, 0]])
+         result = numIsomorphisms(A, B)
+         expected = self.sol_numIsomorphisms(A, B)
+         self.assertEqual( result, expected )
+--------------
+
+--------------
+#6: 25.00 points
+Failing test: test_allPermutationMatrices:  @points=25 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg2.py", line 97, in test_allPermutationMatrices
+    correct = self.sol_allPermutationMatrices(result,n)
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg2.py", line 81, in sol_allPermutationMatrices
+    for m in matrixList:
+TypeError: 'NoneType' object is not iterable
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_allPermutationMatrices(self):
+         """ @points=25 """
+         n=2
+         result = allPermutationMatrices(n)
+         correct = self.sol_allPermutationMatrices(result,n)
+         self.assertTrue(correct )
+--------------
+

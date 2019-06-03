@@ -1,0 +1,112 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Grade: 0.00/100.00
+
+4 Deduction(s):
+
+- --------------
+#1: 30.00 points
+Failing test: test_multiples:  @points=30 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg0.py", line 56, in test_multiples
+    self.assertEqual( result, expected )
+AssertionError: None != [0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, [86 chars], 99]
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_multiples(self):
+         """ @points=30 """
+         num=3
+         result = multiples(num)
+         expected = self.sol_multiples(num)
+         self.assertEqual( result, expected )
+- --------------
+
+- --------------
+#2: 10.00 points
+Failing test: test_squares: 
+        We specify the point value for each test in the method comment string:
+        @points=10
+        
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg0.py", line 48, in test_squares
+    self.assertEqual( result, expected )
+AssertionError: None != [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_squares(self):
+         """
+         We specify the point value for each test in the method comment string:
+         @points=10
+         """
+         
+         result = squares() 
+         expected = self.sol_squares()
+ 
+         self.assertEqual( result, expected )
+- --------------
+
+- --------------
+#3: 30.00 points
+Failing test: test_sum_lists:  @points=30 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg0.py", line 66, in test_sum_lists
+    self.assertEqual( result, expected )
+AssertionError: None != [4, 4, 8]
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_sum_lists(self):
+         """ @points=30 """
+         arg1=[3,2,3]
+         arg2=[1,2,5]
+         expected = self.sol_sum_lists(arg1, arg2)
+ 
+         result = sum_lists(arg1, arg2)
+         self.assertEqual( result, expected )
+- --------------
+
+- --------------
+#4: 30.00 points
+Failing test: test_sum_lists_exception:  @points=30 
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/dist-packages/timeout_decorator/timeout_decorator.py", line 81, in new_function
+    return function(*args, **kwargs)
+  File "test_asg0.py", line 74, in test_sum_lists_exception
+    self.assertRaises(ValueError,sum_lists, arg1, arg2)
+AssertionError: ValueError not raised by sum_lists
+
+source:
+    @timeout_decorator.timeout(8)
+     def test_sum_lists_exception(self):
+         """ @points=30 """
+         arg1=[3,2,3]
+         arg2=[1,2]
+         self.assertRaises(ValueError,sum_lists, arg1, arg2)
+- --------------
+
+
+Metadata
+===================
+Assignment: asg0-onlytesting
+Repo: ssh://git@git.imada.sdu.dk/DM561-DM562-2018/tobia17-repo
+Timestamp: 1541757681.5293162
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1
+
+iQEcBAEBAgAGBQJb5VrxAAoJEKiHxn3oWX95XIcH/iqG/UBs3rfxHXUvi24HuBJ4
+NwyWqKRYU9w0yEL4hQvXpitVn4GUYYgul8/7VvglfsN0ovMOESKTdCoQlzP4yt6+
+Rzx9tO8EUN30eSx1bRL4jv6yc0sV0BmzLcwHuZn2eCj6NT7nWjcUTFGnAtp8uk2X
+GH3okOYRSMUf/ayHAWc5gfYL5kTiBTzwRYzzXHssm5kJr3GsNDLrBqc5VP8fN1hb
+wmI//RFspCi8AGKTETQ0eoMV6FIUD2SBg8OtWfchHUpuGlPMDupzVEWE5xnT7mqJ
+PXAXPjT8+5J0k1+5xUJbLkAOb8/yk1BhqBz66XIKgvExg9vemI/uLadpEgZOnvc=
+=bpR/
+-----END PGP SIGNATURE-----
